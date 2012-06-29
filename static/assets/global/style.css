@@ -1,0 +1,88 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+}
+
+#sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100%;
+    background: #eee;
+}
+
+/*上传*/
+#upload {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 1em;
+    height: 100px;
+}
+
+#upload-wrapper {
+    border: solid 1px blue;
+    width: 200px;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#upload-trigger {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border: solid 1px blue;
+}
+
+#upload-wrapper-trigger {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+#upload-wrapper button.upload {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 200px;
+    padding: 0;
+    font-size: 20px;
+    height: 80px;
+    font-family: simhei, sans-serif;
+}
+
+#SWFUpload_0 {
+    position: relative;
+    z-index: 99;
+}
+
+#container {
+    position: absolute;
+    left: 280px;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#content {
+    background: #aaa;
+    height: 100%;
+}
