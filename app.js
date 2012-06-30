@@ -21,7 +21,7 @@ app.configure(function () {
     app.use(express.session());
     app.use(app.router);
     app.use(express.static(__dirname + '/static'));
-    app.use(express.static(__dirname + '/static'));
+    app.use(express.static(__dirname + '/storage'));
 });
 
 app.configure('development', function () {

@@ -10,7 +10,7 @@ define(function (require, exports, module) {
     exports.init = function () {
 
         function fileQueued(fileObject) {
-
+            console.log(fileObject);
         }
 
         function fileDialogComplete(numFilesSelected, numFilesQueued) {
@@ -27,14 +27,18 @@ define(function (require, exports, module) {
         }
 
         function uploadComplete() {
+            console.log('上传文件完成');
+        }
 
+        function uploadError() {
+            console.log('上传文件出错');
         }
 
         var settings = {
             flash_url:"/assets/swfupload/flash/swfupload.swf",
             upload_url:"/upload",
             post_params:{"random":Math.random()},
-            file_size_limit:"100 MB",
+            file_size_limit:"9000 MB",
             file_types:"*.*",
             file_types_description:"All Files",
             file_upload_limit:100,
@@ -58,7 +62,7 @@ define(function (require, exports, module) {
             file_dialog_complete_handler:fileDialogComplete,
             upload_start_handler:uploadStart,
             //upload_progress_handler:uploadProgress,
-            //upload_error_handler:uploadError,
+            upload_error_handler:uploadError,
             upload_success_handler:uploadSuccess,
             upload_complete_handler:uploadComplete
         };
