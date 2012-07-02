@@ -11,7 +11,7 @@ block content
             #upload-wrapper
                 b.upload(href="#") ＋上传作品
                 #upload-wrapper-trigger
-            #form1(action='index.php',method='post',enctype='multipart/form-data',style="margin-top:120px;")
+            form#form1(action='index.php',method='post',enctype='multipart/form-data',style="margin-top:120px;")
                 #fsUploadProgress.fieldset.flash
                     span.legend Upload Queue
                 #divStatus 0 Files Uploaded

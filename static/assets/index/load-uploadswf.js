@@ -32,15 +32,16 @@ define(function (require, exports, module) {
             button_placeholder_id:"upload-wrapper-trigger",
 
             // The event handler functions are defined in handlers.js
-            file_queued_handler:fileQueued,
-            file_queue_error_handler:fileQueueError,
-            file_dialog_complete_handler:fileDialogComplete,
-            upload_start_handler:uploadStart,
-            upload_progress_handler:uploadProgress,
-            upload_error_handler:uploadError,
-            upload_success_handler:uploadSuccess,
-            upload_complete_handler:uploadComplete,
-            queue_complete_handler:queueComplete    // Queue plugin event
+            file_queued_handler : fileQueued,
+            file_queue_error_handler : fileQueueError,
+            file_dialog_complete_handler : fileDialogComplete,
+            upload_start_handler : uploadStart,
+            upload_progress_handler : uploadProgress,
+            upload_error_handler : uploadError,
+            upload_success_handler : uploadSuccess,
+            upload_complete_handler : uploadComplete,
+            queue_complete_handler : queueComplete	// Queue plugin event
+
 
         };
 
