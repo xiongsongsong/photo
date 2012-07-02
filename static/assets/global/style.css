@@ -4,13 +4,18 @@ html, body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+form {
+    margin: 0;
+}
+
 html, body {
     height: 100%;
 }
 
-body {
+html body {
     position: relative;
     overflow: hidden;
+    background: #16499a;
 }
 
 #sidebar {
@@ -19,57 +24,6 @@ body {
     top: 0;
     width: 260px;
     height: 100%;
-    background: #eee;
-}
-
-/*上传*/
-#upload {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
-    padding-bottom: 1em;
-    height: 100px;
-}
-
-#upload-wrapper {
-    width: 200px;
-    height: 80px;
-    margin: 0 auto;
-    position: relative;
-}
-
-#upload-trigger {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-}
-
-#upload-wrapper-trigger {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-}
-
-#upload-wrapper button.upload {
-    left: 0;
-    top: 0;
-    position: absolute;
-    width: 200px;
-    padding: 0;
-    font-size: 20px;
-    height: 80px;
-    font-family: simhei, sans-serif;
-}
-
-#SWFUpload_0 {
-    position: relative;
-    z-index: 99;
 }
 
 #container {
@@ -81,6 +35,73 @@ body {
 }
 
 #content {
-    background: #aaa;
+    background: #d7ecf1;
     height: 100%;
+}
+
+/*上传*/
+#upload {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    width: 100%;
+}
+
+#upload-wrapper {
+    margin: 0 auto;
+    width: 120px;
+    height: 30px;
+    position: relative;
+    top: 40px;
+    z-index: 1;
+}
+
+#upload-wrapper .upload {
+    left: 0;
+    top: 0;
+    position: absolute;
+    padding: 0;
+    font-size: 23px;
+    color: #fff;
+    font-family: "Microsoft Yahei", simhei, simsun, sans-serif;
+    font-weight: normal;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#SWFUpload_0 {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+}
+
+/*登陆*/
+#login {
+    position: absolute;
+    top: 32px;
+    z-index: 2;
+    left: 16px;
+}
+
+#login input.username {
+    width: 150px;
+    padding: 1em;
+    font-size: 14px;
+    border: 0 none;
+    vertical-align: middle;
+}
+
+#login button.submit {
+    padding: 1em;
+    overflow: visible;
+    background: #1e62cf;
+    border: 0 none;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    vertical-align: middle;
 }

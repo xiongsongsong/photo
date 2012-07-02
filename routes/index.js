@@ -3,15 +3,19 @@
  */
 
 exports.index = function (req, res) {
-    res.render('index', { title:'test' });
+    console.log(req.cookies['username']);
+    res.render('index', {
+        title:'杰杰图片分享系统',
+        isLogin:req.cookies['username'] !== undefined
+    });
 };
 
 exports.init = function (app) {
 
-    /*首页*/
     app.get('/', exports.index);
 
-    /*上传*/
     app.post('/upload', require('./upload').upload);
+
+    app.post('/login', require('./login').login);
 
 };

@@ -3,12 +3,20 @@ extends layout
 block content
     #sidebar
         #menu
-        form(method='post',action='upload')
-            input(type='value',name="key")
-            input(type='submit')
         #upload
+            if(isLogin===false)
+                form#login(method='post',action='login')
+                    input.username(type='text',name="username",placeholder="OA帐号")
+                    button.btn-primary.submit(data-toggle="button",href="#123") 确定
             #upload-wrapper
-                button.btn.btn-primary.upload(data-toggle='button',href="#123") 上传文件
+                b.upload(href="#") ＋上传作品
                 #upload-wrapper-trigger
+            #form1(action='index.php',method='post',enctype='multipart/form-data',style="margin-top:120px;")
+                #fsUploadProgress.fieldset.flash
+                    span.legend Upload Queue
+                #divStatus 0 Files Uploaded
+                    div
+                        span#spanButtonPlaceHolder
+                        input#btnCancel(type='button',value='Cancel All Uploads',onclick="window.swfu.cancelQueue();")
     #container
         #content

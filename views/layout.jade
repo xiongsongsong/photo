@@ -3,15 +3,12 @@ html
   head
     title= title
     link(rel='stylesheet', href='/assets/global/style.css')
-    link(rel='stylesheet', href='/assets/bootstrap/css/bootstrap-responsive.min.css')
-    link(rel='stylesheet', href='/assets/bootstrap/css/bootstrap.min.css')
   body
     block content
     script(src='/assets/jquery-1.7.2.min.js')
-    script(src='/assets/bootstrap/js/bootstrap.min.js')
-    script(src='/assets/bootstrap/js/bootstrap-button.js')
     script(src='/assets/swfupload/swfupload.js')
     script(src='/assets/swfupload/plugins/swfupload.queue.js')
+    script(src='/assets/swfupload/plugins/handlers.js')
     script(src="/assets/sea.js")
   script
     seajs.config({ 'base': 'http://'+window.location.host+'/assets/' });

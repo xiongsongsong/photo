@@ -9,31 +9,6 @@
 define(function (require, exports, module) {
     exports.init = function () {
 
-        function fileQueued(fileObject) {
-            console.log(fileObject);
-        }
-
-        function fileDialogComplete(numFilesSelected, numFilesQueued) {
-            console.log(numFilesSelected, numFilesQueued);
-            this.startUpload();
-        }
-
-        function uploadStart() {
-
-        }
-
-        function uploadSuccess() {
-
-        }
-
-        function uploadComplete() {
-            console.log('上传文件完成');
-        }
-
-        function uploadError() {
-            console.log('上传文件出错');
-        }
-
         var settings = {
             flash_url:"/assets/swfupload/flash/swfupload.swf",
             upload_url:"/upload",
@@ -52,19 +27,21 @@ define(function (require, exports, module) {
 
             // Button settings
             //button_image_url:"images/TestImageNoText_65x29.png",
-            button_width:"200",
-            button_height:"80",
+            button_width:"120",
+            button_height:"30",
             button_placeholder_id:"upload-wrapper-trigger",
 
             // The event handler functions are defined in handlers.js
             file_queued_handler:fileQueued,
-            //file_queue_error_handler:fileQueueError,
+            file_queue_error_handler:fileQueueError,
             file_dialog_complete_handler:fileDialogComplete,
             upload_start_handler:uploadStart,
-            //upload_progress_handler:uploadProgress,
+            upload_progress_handler:uploadProgress,
             upload_error_handler:uploadError,
             upload_success_handler:uploadSuccess,
-            upload_complete_handler:uploadComplete
+            upload_complete_handler:uploadComplete,
+            queue_complete_handler:queueComplete    // Queue plugin event
+
         };
 
         window.swfu = new SWFUpload(settings);
