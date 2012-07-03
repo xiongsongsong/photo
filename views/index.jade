@@ -13,8 +13,12 @@ block content
                 #upload-wrapper-trigger
             form#form1(action='index.php',method='post',enctype='multipart/form-data',style="margin-top:120px;")
                 #fsUploadProgress.fieldset.flash
-                    span.legend Upload Queue
                 #divStatus 0 Files Uploaded
+                ul#fileQueueList
+                    li
+                        div 考核统计.xls
+                        p
+                            span
                 div
                     span#spanButtonPlaceHolder
                     input#btnCancel(type='button',value='Cancel All Uploads',onclick="window.swfu.cancelQueue();")
