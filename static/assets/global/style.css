@@ -20,18 +20,18 @@ html, body {
 html body {
     position: relative;
     overflow: hidden;
-    background: #16499a;
 }
 
 #sidebar {
     position: absolute;
     left: 0;
     top: 0;
-    width: 260px;
+    width: 280px;
     height: 100%;
     color: #fff;
     font-size: 12px;
     font-family: simsun, sans-serif;
+    background: #16499a;
 }
 
 #container {
@@ -48,6 +48,11 @@ html body {
 }
 
 /*上传*/
+#form1 {
+    width: 92%;
+    margin: 0 auto;
+}
+
 #upload {
     position: absolute;
     left: 0;

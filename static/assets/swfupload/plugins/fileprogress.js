@@ -90,31 +90,19 @@ FileProgress.prototype.setComplete = function () {
     this.fileProgressElement.className = "progressContainer blue";
     this.fileProgressElement.childNodes[3].className = "progressBarComplete";
     this.fileProgressElement.childNodes[3].style.width = "";
-
-    var oSelf = this;
-    this.setTimer(setTimeout(function () {
-        oSelf.disappear();
-    }, 10000));
+    KISSY.DOM.remove(this.fileProgressWrapper);
 };
 FileProgress.prototype.setError = function () {
     this.fileProgressElement.className = "progressContainer red";
     this.fileProgressElement.childNodes[3].className = "progressBarError";
     this.fileProgressElement.childNodes[3].style.width = "";
 
-    var oSelf = this;
-    this.setTimer(setTimeout(function () {
-        oSelf.disappear();
-    }, 5000));
 };
 FileProgress.prototype.setCancelled = function () {
     this.fileProgressElement.className = "progressContainer";
     this.fileProgressElement.childNodes[3].className = "progressBarError";
     this.fileProgressElement.childNodes[3].style.width = "";
 
-    var oSelf = this;
-    this.setTimer(setTimeout(function () {
-        oSelf.disappear();
-    }, 2000));
 };
 FileProgress.prototype.setStatus = function (status) {
     this.fileProgressElement.childNodes[2].innerHTML = status;
@@ -155,49 +143,4 @@ FileProgress.prototype.appear = function () {
     this.opacity = 100;
     this.fileProgressWrapper.style.display = "";
 
-};
-
-// Fades out and clips away the FileProgress box.
-FileProgress.prototype.disappear = function () {
-
-    var reduceOpacityBy = 15;
-    var reduceHeightBy = 4;
-    var rate = 30;	// 15 fps
-
-    if (this.opacity > 0) {
-        this.opacity -= reduceOpacityBy;
-        if (this.opacity < 0) {
-            this.opacity = 0;
-        }
-
-        if (this.fileProgressWrapper.filters) {
-            try {
-                this.fileProgressWrapper.filters.item("DXImageTransform.Microsoft.Alpha").opacity = this.opacity;
-            } catch (e) {
-                // If it is not set initially, the browser will throw an error.  This will set it if it is not set yet.
-                this.fileProgressWrapper.style.filter = "progid:DXImageTransform.Microsoft.Alpha(opacity=" + this.opacity + ")";
-            }
-        } else {
-            this.fileProgressWrapper.style.opacity = this.opacity / 100;
-        }
-    }
-
-    if (this.height > 0) {
-        this.height -= reduceHeightBy;
-        if (this.height < 0) {
-            this.height = 0;
-        }
-
-        this.fileProgressWrapper.style.height = this.height + "px";
-    }
-
-    if (this.height > 0 || this.opacity > 0) {
-        var oSelf = this;
-        this.setTimer(setTimeout(function () {
-            oSelf.disappear();
-        }, rate));
-    } else {
-        this.fileProgressWrapper.style.display = "none";
-        this.setTimer(null);
-    }
 };
