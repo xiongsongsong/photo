@@ -19,27 +19,22 @@ exports.upload = function (req, res) {
         targetPath = 'storage\\' + baseName;
 
     var photo = Object.create(null);
+    photo._id = baseName;
     photo.name = fileData.name;
     photo.size = fileData.size;
-    photo.fileName = baseName;
+    photo.owner = decodeURIComponent(req.body['username']);
     photo.timeStamp = Date.now();
 
 
     fs.rename(tempPath, targetPath, function (err) {
-        if (err) {
-            res.end(JSON.stringify({status:'Error'}));
-        } else {
-            fs.unlink(tempPath, function (err) {
-                if (err) {
-                    res.end(JSON.stringify({status:'UnLink Error'}));
-                } else {
-                    $("database.collection").save(photo);
-                    /*$("database.collection").find({}, function (result) {
-                     res.send(JSON.stringify(result.documents[0]));
-                     });*/
-                    res.end(JSON.stringify({status:'Save success'}));
-                }
+        if (!err) {
+            $("database.collection").save(photo);
+            $("database.collection").find({ _id:photo._id }, function (result) {
+                console.log(JSON.stringify(result.documents[result.documents.length - 1]));
+                res.end('{}')
             });
+        } else {
+            res.end(JSON.stringify({status:'Error'}));
         }
     });
 };

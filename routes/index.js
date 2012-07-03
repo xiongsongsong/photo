@@ -3,7 +3,6 @@
  */
 
 exports.index = function (req, res) {
-    console.log(req.cookies['username']);
     res.render('index', {
         title:'杰杰图片分享系统',
         isLogin:req.cookies['username'] !== undefined
