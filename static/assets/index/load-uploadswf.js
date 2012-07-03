@@ -41,8 +41,6 @@ define(function (require, exports, module) {
             upload_success_handler : uploadSuccess,
             upload_complete_handler : uploadComplete,
             queue_complete_handler : queueComplete	// Queue plugin event
-
-
         };
 
         window.swfu = new SWFUpload(settings);

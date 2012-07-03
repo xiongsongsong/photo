@@ -26,11 +26,20 @@ exports.upload = function (req, res) {
 
 
     fs.rename(tempPath, targetPath, function (err) {
-        fs.unlink(tempPath, function () {
-            $("database.collection").save(photo);
-            $("database.collection").find({}, function (result) {
-                res.send(JSON.stringify(result.documents[0]));
+        if (err) {
+            res.end(JSON.stringify({status:'Error'}));
+        } else {
+            fs.unlink(tempPath, function (err) {
+                if (err) {
+                    res.end(JSON.stringify({status:'UnLink Error'}));
+                } else {
+                    $("database.collection").save(photo);
+                    /*$("database.collection").find({}, function (result) {
+                     res.send(JSON.stringify(result.documents[0]));
+                     });*/
+                    res.end(JSON.stringify({status:'Save success'}));
+                }
             });
-        });
+        }
     });
 };
