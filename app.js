@@ -15,7 +15,7 @@ app.configure(function () {
     app.set('view engine', 'jade');
     app.use(express.favicon());
     app.use(express.logger('dev'));
-    app.use(express.bodyParser({uploadDir:'./tmp'}));
+    app.use(express.bodyParser({uploadDir:'E:\\temp', limit:"30000mb", hash:"md5"}));
     app.use(express.methodOverride());
     app.use(express.cookieParser('your secret here'));
     app.use(express.session());

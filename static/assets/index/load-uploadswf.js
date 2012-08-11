@@ -16,8 +16,8 @@ define(function (require, exports, module) {
                 "username":encodeURIComponent(KISSY.Cookie.get('username'))
             },
             file_size_limit:"9000 MB",
-            file_types:"*.*",
-            file_types_description:"All Files",
+            file_types:"*.jpg;*.gif;*.bmp;*.jpeg",
+            file_types_description:"PSD、JPG、PNG",
             file_upload_limit:100,
             file_queue_limit:0,
             button_window_mode:SWFUpload.WINDOW_MODE.TRANSPARENT,
@@ -26,7 +26,6 @@ define(function (require, exports, module) {
                 cancelButtonId:"btnCancel"
             },
             debug:false,
-
             // Button settings
             //button_image_url:"images/TestImageNoText_65x29.png",
             button_width:"120",

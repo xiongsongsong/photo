@@ -1,22 +1,21 @@
 extends layout
 
 block content
-    #sidebar
-        #menu
-        #upload
-            if(isLogin===false)
-                form#login(method='post',action='login')
-                    input.username(type='text',name="username",placeholder="OA帐号")
-                    button.btn-primary.submit(data-toggle="button",href="#123") 确定
-            #upload-wrapper
-                b.upload(href="#") ＋上传作品
-                #upload-wrapper-trigger
-            form#form1(action='index.php',method='post',enctype='multipart/form-data',style="margin-top:100px;")
-                #fsUploadProgress.fieldset.flash
-                    span.legend 上传队列
-                #divStatus 0 Files Uploaded
-                div
-                    span#spanButtonPlaceHolder
-                    input#btnCancel(type='button',value='Cancel All Uploads',onclick="window.swfu.cancelQueue();")
+    #header
+    #upload
+        if(isLogin===false)
+            form#login(method='post',action='login')
+                input.username(type='text',name="username",placeholder="OA帐号")
+                button.btn-primary.submit(data-toggle="button",href="#123") 确定
+        #upload-trigger-wrapper
+            b.upload(href="#") 上传作品
+            #upload-wrapper-trigger
+        form#form1(action='index.php',method='post',enctype='multipart/form-data')
+            #fsUploadProgress.fieldset.flash
+                span.legend 上传队列
+            #divStatus 0 Files Uploaded
+            div
+                span#spanButtonPlaceHolder
+                input#btnCancel(type='button',value='Cancel All Uploads',onclick="window.swfu.cancelQueue();")
     #container
         #content

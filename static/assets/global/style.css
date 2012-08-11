@@ -1,7 +1,6 @@
 html, body {
     padding: 0;
     margin: 0;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -22,14 +21,22 @@ html body {
     overflow: hidden;
 }
 
+body {
+    background: #383838;
+}
+
+#header {
+    height: 50px;
+    background: #161616;
+    border-bottom: solid 1px #000;
+}
+
 #sidebar {
     position: absolute;
     left: 0;
     top: 0;
     width: 280px;
-    height: 100%;
     color: #fff;
-    font-size: 12px;
     font-family: simsun, sans-serif;
     background: #16499a;
 }
@@ -43,46 +50,49 @@ html body {
 }
 
 #content {
-    background: #d7ecf1;
     height: 100%;
 }
 
 /*上传*/
 #form1 {
-    width: 92%;
     margin: 0 auto;
+    width: 200px;
+    padding: 1em;
+    background: #eee;
+    font-size: 12px;
 }
 
 #upload {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 51px;
     text-align: center;
-    width: 100%;
+    border: solid 1px red;
+    width: 200px;
 }
 
-#upload-wrapper {
+#upload-trigger-wrapper {
     margin: 0 auto;
-    width: 120px;
-    height: 30px;
-    position: relative;
-    top: 40px;
+    position: absolute;
+    top: -50px;
     z-index: 1;
+    background: #eee; /* url(http://d1i7zn8xxi12eh.cloudfront.net/9e0880109ebe15c59bfd01adafbebdfa8871661e/images/generic_buttons/overlay_bright_50x50.png);*/
+    height: 50px;
+    width: 50px;
+    text-align: center;
 }
 
-#upload-wrapper .upload {
-    left: 0;
-    top: 0;
+#upload-trigger-wrapper .upload {
+    height: 50px;
     position: absolute;
-    padding: 0;
-    font-size: 23px;
-    color: #fff;
-    font-family: "Microsoft Yahei", simhei, simsun, sans-serif;
+    line-height: 20px;
+    left: .9em;
+    top: 0;
+    padding-top: .3em;
+    width: 2em;
+    font-size: 12px;
+    letter-spacing: 0;
     font-weight: normal;
-    width: 120px;
-    height: 30px;
-    line-height: 30px;
-    text-shadow: 1px 1px 1px #000;
 }
 
 #SWFUpload_0 {

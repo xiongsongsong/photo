@@ -92,4 +92,5 @@ a.progressCancel {
     height: 14px;
     width: 14px;
     float: right;
+    background: red;
 }
