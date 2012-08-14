@@ -7,31 +7,59 @@
  */
 
 var fs = require('fs'),
-    path = require('path'),
-    $ = require("mongous").Mongous;
+    path = require('path');
+
+
+var mongodb = require('mongodb');
+var server = new mongodb.Server("127.0.0.1", 27017, {});
+var fed = new mongodb.Db('wall-works', server, {});
+
+var Client;
+exports.dbClient = function (func) {
+    if (Client !== undefined) {
+        console.log('Database connection is alive\t' + new Date().toLocaleTimeString());
+        func();
+    } else {
+        fed.open(function (error, client) {
+            console.log('The database is open!\t' + new Date().toLocaleTimeString());
+            Client = client;
+            func();
+        });
+    }
+};
+
+fed.on('close', function () {
+    console.log('Database connection is disconnected!\t' + new Date().toLocaleTimeString());
+    Client = undefined;
+});
 
 exports.upload = function (req, res) {
     res.header('Content-Type', 'text/json;charset=utf-8');
-
     var fileData = req.files.Filedata,
         tempPath = fileData.path,
         baseName = path.basename(tempPath),
         targetPath = 'storage\\' + baseName;
 
-    var photo = Object.create(null);
-    photo._id = baseName;
-    photo.name = fileData.name;
-    photo.size = fileData.size;
-    photo.owner = decodeURIComponent(req.body['username']);
-    photo.timeStamp = Date.now();
-
+    var works = Object.create(null);
+    works._id = baseName;
+    works.name = fileData.name;
+    works.size = fileData.size;
+    works.owner = decodeURIComponent(req.body['username']);
+    works.timestamp = Date.now();
 
     fs.rename(tempPath, targetPath, function (err) {
         if (!err) {
-            $("database.collection").save(photo);
-            $("database.collection").find({ _id:photo._id }, function (result) {
-                console.log(JSON.stringify(result.documents[result.documents.length - 1]));
-                res.end('{}')
+            exports.dbClient(function () {
+                var collection = new mongodb.Collection(Client, 'works');
+                collection.insert(works, {safe:true},
+                    function (err, docs) {
+                        if (err) {
+                            res.end(JSON.stringify('error'), undefined, '\t');
+                        } else {
+                            console.log(docs);
+                            res.end(JSON.stringify({'status':true}, undefined, '\t'));
+                        }
+                    });
             });
         } else {
             res.end(JSON.stringify({status:'Error'}));

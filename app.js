@@ -4,8 +4,7 @@
 
 var express = require('express'),
     routes = require('./routes'),
-    http = require('http'),
-    $ = require("mongous").Mongous;
+    http = require('http');
 
 var app = express();
 
@@ -15,7 +14,7 @@ app.configure(function () {
     app.set('view engine', 'jade');
     app.use(express.favicon());
     app.use(express.logger('dev'));
-    app.use(express.bodyParser({uploadDir:'E:\\temp', limit:"30000mb", hash:"md5"}));
+    app.use(express.bodyParser({uploadDir:'./tmp', limit:"30000mb", hash:"sha1"}));
     app.use(express.methodOverride());
     app.use(express.cookieParser('your secret here'));
     app.use(express.session());
@@ -30,7 +29,9 @@ app.configure('development', function () {
 
 routes.init(app);
 
-
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
+
+
+

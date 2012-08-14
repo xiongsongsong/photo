@@ -67,17 +67,16 @@ body {
     left: 0;
     top: 51px;
     text-align: center;
-    border: solid 1px red;
     width: 200px;
 }
 
 #upload-trigger-wrapper {
     margin: 0 auto;
     position: absolute;
-    top: -50px;
+    top: -51px;
     z-index: 1;
-    background: #eee; /* url(http://d1i7zn8xxi12eh.cloudfront.net/9e0880109ebe15c59bfd01adafbebdfa8871661e/images/generic_buttons/overlay_bright_50x50.png);*/
-    height: 50px;
+    background: #888;
+    height: 51px;
     width: 50px;
     text-align: center;
 }

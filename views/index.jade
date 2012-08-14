@@ -17,5 +17,9 @@ block content
             div
                 span#spanButtonPlaceHolder
                 input#btnCancel(type='button',value='Cancel All Uploads',onclick="window.swfu.cancelQueue();")
+        form(action="/login",method="post",accept-charset="GB2312",onsubmit="document.charset='GB2312';")
+            input(type="value",name="UNAME")
+            input(type="password",name="PASSWORD")
+            input(type="submit",name="提交")
     #container
         #content

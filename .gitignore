@@ -3,3 +3,4 @@ test*.html
 storage/*
 tmp/
 storage/
+test*

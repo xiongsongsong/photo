@@ -6,13 +6,48 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var iconv = require('iconv-lite');
+var http = require('http');
+var BufferHelper = require('bufferhelper');
 
 exports.login = function (req, res) {
-    res.header('Content-Type', 'text/json; charset=utf-8');
-    if (req.body.username !== undefined) {
-        res.cookie('username', encodeURIComponent(req.body.username), { maxAge:900000 });
-        res.end(JSON.stringify({status:'已成功保存帐号痕迹'}));
-    } else {
-        res.end(JSON.stringify({status:'无法获取用户名'}));
-    }
+    var content = {
+        'UNAME':req.body.UNAME,
+        'PASSWORD':req.body.PASSWORD
+    };
+
+    var options = {
+        host:'192.168.1.240',
+        port:80,
+        path:'/logincheck.php',
+        method:'POST',
+        headers:{
+            'Content-Type':'application/x-www-form-urlencoded',
+            'Connection':'Close'
+        }
+    };
+
+    var request = http.request(options, function (response) {
+        var bufferHelper = new BufferHelper();
+        response.on('data', function (chunk) {
+            bufferHelper.concat(chunk);
+        });
+        response.on('end', function () {
+            var html = iconv.decode(bufferHelper.toBuffer(), 'GBK').toString();
+            if (html.indexOf('location="general"') > -1) {
+                console.log('登陆成功');
+                res.write('{"status":"success"}');
+            } else {
+                console.log('登陆失败');
+                res.write('{"status":"error"}');
+            }
+            res.end();
+        });
+    });
+
+    request.write(Object.keys(content).map(function (item) {
+        return item + '=' + content[item];
+    }).join('&'));
+    request.end();
+
 };
