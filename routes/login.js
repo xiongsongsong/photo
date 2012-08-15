@@ -29,16 +29,17 @@ exports.login = function (req, res) {
 
     var request = http.request(options, function (response) {
         var bufferHelper = new BufferHelper();
+        console.log(response.headers);
         response.on('data', function (chunk) {
             bufferHelper.concat(chunk);
         });
         response.on('end', function () {
             var html = iconv.decode(bufferHelper.toBuffer(), 'GBK').toString();
             if (html.indexOf('location="general"') > -1) {
-                console.log('登陆成功');
+                /*req.session.username = user;
+                req.session.userid = docs[0]._id;*/
                 res.write('{"status":"success"}');
             } else {
-                console.log('登陆失败');
                 res.write('{"status":"error"}');
             }
             res.end();
